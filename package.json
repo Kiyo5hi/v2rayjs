@@ -1,0 +1,23 @@
+{
+  "name": "v2rayjs",
+  "version": "1.0.0",
+  "description": "The script which can manipulate the config file of V2ray.",
+  "main": "v2ray.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiyo5hi/v2rayjs.git"
+  },
+  "author": "Kiyoshi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Kiyo5hi/v2rayjs/issues"
+  },
+  "homepage": "https://github.com/Kiyo5hi/v2rayjs#readme",
+  "dependencies": {
+    "shelljs": "^0.8.3",
+    "uuid": "^3.3.2"
+  }
+}
