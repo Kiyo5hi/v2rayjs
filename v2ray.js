@@ -6,7 +6,7 @@ const PATH = '/etc/v2ray/config.json';
 const THIRTY_DAYS = 2592000;
 const THREE_DAYS = 259200;
 
-let configFile = readConfigFile();
+let configFile = read();
 let clients = getClients();
 let uid = clients.length;
 
@@ -14,13 +14,13 @@ function getTime() {
     return Math.round(Date.now() / 1000);
 }
 
-function readConfigFile() {
+function read() {
     let data = JSON.parse(fs.readFileSync(PATH));
     return data;
 }
 
 function getClients() {
-    if (!configFile) configFile = readConfigFile();
+    if (!configFile) configFile = read();
     return configFile.inbounds[0].settings.clients;
 }
 
@@ -58,7 +58,7 @@ function addThirtyDays(uid) {
 /* Always remember to call this function in order to
 apply changes to the config file and restart 
 V2ray service */
-function writeConfigFile() {
+function write() {
     configFile.inbounds[0].settings.clients = clients;
     fs.writeFileSync(PATH, JSON.stringify(configFile), 'utf-8');
     shell.exec('service v2ray restart');
@@ -68,4 +68,4 @@ exports.newClient = newClient;
 exports.addClient = addClient;
 exports.addThirtyDays = addThirtyDays;
 // exports.removeClient = removeClient;
-exports.writeConfigFile = writeConfigFile;
+exports.write = write;
